@@ -19,111 +19,7 @@ const TrustPilot = () => {
   // Refs
   const observerRef = useRef(null);
 
-  // All available locations (dropdown options)
-  const allLocations = [
-    'New York, USA',
-    'Los Angeles, USA',
-    'Chicago, USA',
-    'Houston, USA',
-    'Phoenix, USA',
-    'Philadelphia, USA',
-    'San Antonio, USA',
-    'San Diego, USA',
-    'Dallas, USA',
-    'San Jose, USA',
-    'London, UK',
-    'Manchester, UK',
-    'Birmingham, UK',
-    'Leeds, UK',
-    'Glasgow, UK',
-    'Toronto, Canada',
-    'Vancouver, Canada',
-    'Montreal, Canada',
-    'Calgary, Canada',
-    'Sydney, Australia',
-    'Melbourne, Australia',
-    'Brisbane, Australia',
-    'Perth, Australia',
-    'Berlin, Germany',
-    'Munich, Germany',
-    'Frankfurt, Germany',
-    'Paris, France',
-    'Lyon, France',
-    'Marseille, France',
-    'Tokyo, Japan',
-    'Osaka, Japan',
-    'Nagoya, Japan',
-    'Mumbai, India',
-    'Delhi, India',
-    'Bangalore, India',
-    'Chennai, India',
-    'Singapore',
-    'Hong Kong',
-    'Dubai, UAE',
-    'Abu Dhabi, UAE'
-  ];
-
-  // Group locations by country for better organization
-  const groupedLocations = {
-    'United States': [
-      'New York, USA',
-      'Los Angeles, USA',
-      'Chicago, USA',
-      'Houston, USA',
-      'Phoenix, USA',
-      'Philadelphia, USA',
-      'San Antonio, USA',
-      'San Diego, USA',
-      'Dallas, USA',
-      'San Jose, USA'
-    ],
-    'United Kingdom': [
-      'London, UK',
-      'Manchester, UK',
-      'Birmingham, UK',
-      'Leeds, UK',
-      'Glasgow, UK'
-    ],
-    'Canada': [
-      'Toronto, Canada',
-      'Vancouver, Canada',
-      'Montreal, Canada',
-      'Calgary, Canada'
-    ],
-    'Australia': [
-      'Sydney, Australia',
-      'Melbourne, Australia',
-      'Brisbane, Australia',
-      'Perth, Australia'
-    ],
-    'Germany': [
-      'Berlin, Germany',
-      'Munich, Germany',
-      'Frankfurt, Germany'
-    ],
-    'France': [
-      'Paris, France',
-      'Lyon, France',
-      'Marseille, France'
-    ],
-    'Japan': [
-      'Tokyo, Japan',
-      'Osaka, Japan',
-      'Nagoya, Japan'
-    ],
-    'India': [
-      'Mumbai, India',
-      'Delhi, India',
-      'Bangalore, India',
-      'Chennai, India'
-    ],
-    'Other Locations': [
-      'Singapore',
-      'Hong Kong',
-      'Dubai, UAE',
-      'Abu Dhabi, UAE'
-    ]
-  };
+ 
 
   const lastElementRef = useCallback(node => {
     if (loading) return;
@@ -322,47 +218,28 @@ const TrustPilot = () => {
               <input
                 type="text"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e)=> setQuery(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="e.g., software company"
               />
             </div>
-            
+          
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 City/Location <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <select
-                  value={selectedLocation}
-                  onChange={handleLocationChange}
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none pr-10"
-                  required
-                >
-                  <option value="">Select a city...</option>
-                  {Object.entries(groupedLocations).map(([country, cities]) => (
-                    <optgroup key={country} label={country}>
-                      {cities.map(city => (
-                        <option key={city} value={city}>{city}</option>
-                      ))}
-                    </optgroup>
-                  ))}
-                </select>
-                {selectedLocation && (
-                  <button
-                    type="button"
-                    onClick={handleClearLocation}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                )}
+                
+             	<input value={selectedLocation}
+                  onChange={handleLocationChange} 
+className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="e.g., Location"
+
+ />
+   
+             
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
+                 
                 </div>
               </div>
             </div>
